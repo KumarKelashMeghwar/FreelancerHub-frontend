@@ -70,7 +70,7 @@ const Gigs = () => {
         },
       });
 
-      if (response.status == 201) {
+      if (response.status == 200) {
         alert(response.data);
         window.location.reload()
       }

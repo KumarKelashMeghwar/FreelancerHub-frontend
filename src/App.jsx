@@ -9,8 +9,11 @@ import Admin from "./dashboard/admin/Admin";
 import Register from "./pages/Register";
 import Gigs from "./dashboard/freelancer/Gigs";
 import UserPage from "./dashboard/admin/UserPage";
-import {Dashboard as AdminDashboard} from "./dashboard/admin/Dashboard";
+import { Dashboard as AdminDashboard } from "./dashboard/admin/Dashboard";
 import AddGig from "./dashboard/freelancer/AddGig";
+import Home from "./pages/Home";
+import GigDetails from "./pages/GigDetails";
+import UserDetails from "./pages/UserDetails";
 
 
 // Private Route Component
@@ -52,7 +55,9 @@ const AppContent = () => {
       <Routes>
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
-        <Route path="/" element={<h1>Welcome Home</h1>} />
+        <Route path="/" element={<Home />} />
+        <Route path="/gigs/:id" element={<GigDetails />} />
+        <Route path="/users/:id" element={<UserDetails/>} />
         <Route path="/home" element={<h1>Home Page</h1>} />
         <Route
           path="/profile"
@@ -70,7 +75,7 @@ const AppContent = () => {
         </Route>
 
         <Route path="/super-admin" element={<AdminRoute><Admin /></AdminRoute>}>
-          <Route path="" index element={<AdminDashboard/>} />
+          <Route path="" index element={<AdminDashboard />} />
           <Route path="users" element={<UserPage />} />
           <Route path="settings" element={<>Settings</>} />
         </Route>

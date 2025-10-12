@@ -32,7 +32,7 @@ import { LuFileImage, LuX } from "react-icons/lu";
 
 export default function AddGig() {
   const [title, setTitle] = useState("");
-  const [price, setPrice] = useState(0);
+  const [price, setPrice] = useState(5);
   const [description, setDescription] = useState("");
   const [files, setFiles] = useState([]);
   const [editMode, setEditMode] = useState(false);
@@ -165,7 +165,7 @@ export default function AddGig() {
 
     const fd = new FormData();
     fd.append("title", title);
-    fd.append("price", price);
+    fd.append("price", Number(price));
     fd.append("description", description);
     fd.append("categoryId", categoryIds[0]["id"]);
     mySelectedTags.forEach((tag) => fd.append("tagIds", tag));
@@ -342,18 +342,17 @@ export default function AddGig() {
             </Flex>
 
             {/* Price */}
+     
             <Field.Root>
               <Field.Label>Price ($)</Field.Label>
-              <NumberInput.Root value={price}  onChange={(e) => setPrice(e.currentTarget.value)}>
-                <NumberInput.Control />
-                <NumberInput.Input
-                  min={5}
-                  max={1000}
-                  placeholder="Enter price"
-                  name="price"
-                  onChange={(e) => setPrice(e.currentTarget.value)}
-                />
-              </NumberInput.Root>
+              <Input
+                min={5}
+                max={10000}
+                value={price}
+                onChange={(e) => setPrice(e.target.value)}
+                type="number"
+              
+              />
             </Field.Root>
 
             {/* Existing Images Preview */}
