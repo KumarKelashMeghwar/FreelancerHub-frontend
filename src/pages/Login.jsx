@@ -56,10 +56,13 @@ const Login = () => {
 
     const { token, user } = response.data;
 
+
     if (response.status === 200) {
       localStorage.setItem("token", token);
       localStorage.setItem("user", JSON.stringify(user));
       dispatch({ type: "LOGIN", payload: { token, user } });
+
+      
 
       // 👇 Navigate immediately after login
       if (user.role === "ROLE_FREELANCER") {
